@@ -32,4 +32,15 @@ class XMLReader extends \XMLReader
             break;
         }
     }
+
+    public function findNext(string $tagName): ?\SimpleXMLElement
+    {
+        while ($this->read()) {
+            if ($tagName === $this->name) {
+                return simplexml_load_string($this->readOuterXml());
+            }
+        }
+
+        return null;
+    }
 }
