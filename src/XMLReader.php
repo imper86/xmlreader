@@ -8,9 +8,17 @@
 namespace Imper86\XMLReader;
 
 
-class XMLReader extends \XMLReader
+use Iterator;
+use SimpleXMLElement;
+use XMLReader as BaseXMLReader;
+
+class XMLReader extends BaseXMLReader
 {
-    public function getIterator(string $iterableTagName): \Iterator
+    /**
+     * @param string $iterableTagName
+     * @return Iterator|SimpleXMLElement[]
+     */
+    public function getIterator(string $iterableTagName): Iterator
     {
         while ($this->read() && $this->name !== $iterableTagName) {}
 
@@ -33,7 +41,7 @@ class XMLReader extends \XMLReader
         }
     }
 
-    public function findNext(string $tagName): ?\SimpleXMLElement
+    public function findNext(string $tagName): ?SimpleXMLElement
     {
         while ($this->read()) {
             if ($tagName === $this->name) {

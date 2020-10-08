@@ -10,11 +10,16 @@
         }
     ],
     "require": {
-        "ext-xmlreader": "*"
+        "php": "^7.2",
+        "ext-xmlreader": "*",
+        "ext-simplexml": "*"
     },
     "autoload": {
         "psr-4": {
             "Imper86\\XMLReader\\": "src"
         }
+    },
+    "require-dev": {
+        "imper86/vbump": "^1.0"
     }
 }
